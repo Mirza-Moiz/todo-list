@@ -1,0 +1,31 @@
+import React, { useState } from 'react'
+import ListItem from './ListItem'
+import styles from './TodoContainer.module.css'
+import TodoInput from './TodoInput'
+
+const TodoContainer = () => {
+    const [todos, setTodos] = useState([]);
+    const addTodo = todo => {
+        setTodos([...todos, { id: Math.random().toString(), text: todo }])
+
+    }
+    const deleteTodoHandler = id => {
+        setTodos(todos.filter(todo => todo.id !== id))
+    }
+
+
+
+    return (
+        <div className={styles.container}>
+            <h1>Your Todo List
+            </h1>
+            <TodoInput addTodo={addTodo} />
+            {todos.map(text => (
+                <ListItem key={text.id} id={text.id} text={text.text} deleteTodo={deleteTodoHandler} />
+            ))
+            }
+        </div>
+    )
+}
+
+export default TodoContainer
