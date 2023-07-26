@@ -19,7 +19,7 @@ const TodoInput = ({ addTodo }) => {
         <React.Fragment>
             <form onSubmit={submitHandler} className={styles['form-control']}>
                 <input ref={inputRef} value={enteredText} type='text' placeholder='Enter your task here...' onChange={(e) => setEnteredText(e.target.value)} />
-                <Button>Add Todo</Button>
+                <Button>Add Task</Button>
             </form>
         </React.Fragment>
     )

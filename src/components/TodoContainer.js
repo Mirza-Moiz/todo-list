@@ -6,13 +6,20 @@ import TodoInput from './TodoInput'
 const TodoContainer = () => {
     const [todos, setTodos] = useState([]);
     const addTodo = todo => {
-        setTodos([...todos, { id: Math.random().toString(), text: todo }])
+        setTodos([...todos, { id: Math.random().toString(), text: todo, done: false }])
 
     }
     const deleteTodoHandler = id => {
         setTodos(todos.filter(todo => todo.id !== id))
     }
 
+    const toggleDone = id => {
+        setTodos(todos.map(todo => todo.id === id ? { ...todo, done: !todo.done } : {
+            ...todo
+
+
+        }))
+    }
 
 
     return (
@@ -21,7 +28,8 @@ const TodoContainer = () => {
             </h1>
             <TodoInput addTodo={addTodo} />
             {todos.map(text => (
-                <ListItem key={text.id} id={text.id} text={text.text} deleteTodo={deleteTodoHandler} />
+                <ListItem key={text.id} id={text.id} text={text.text} deleteTodo={deleteTodoHandler}
+                    toggleDone={toggleDone} />
             ))
             }
         </div>
