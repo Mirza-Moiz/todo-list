@@ -9,12 +9,12 @@ const ListItem = (props) => {
     const completeTodoHandler = () => {
         props.toggleDone(props.id)
     }
-    const done = props.done ? styles.done : undefined
     return (
-        <div className={styles.box}>
-            <p onClick={completeTodoHandler} className={done}>{props.text}
+        <div className={`${styles.box} ${props.done ? styles.completed : ''}`}>
+            <p onClick={completeTodoHandler} className={props.done ? styles.done : ''}>
+                {props.text}
             </p>
-            <Button onClick={deleteTodoHandler}>Delete</Button>
+            <Button onClick={deleteTodoHandler} >Delete</Button>
         </div>
     )
 }

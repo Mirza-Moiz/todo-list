@@ -16,8 +16,6 @@ const TodoContainer = () => {
     const toggleDone = id => {
         setTodos(todos.map(todo => todo.id === id ? { ...todo, done: !todo.done } : {
             ...todo
-
-
         }))
     }
 
@@ -28,7 +26,7 @@ const TodoContainer = () => {
             </h1>
             <TodoInput addTodo={addTodo} />
             {todos.map(text => (
-                <ListItem key={text.id} id={text.id} text={text.text} deleteTodo={deleteTodoHandler}
+                <ListItem key={text.id} id={text.id} text={text.text} done={text.done} deleteTodo={deleteTodoHandler}
                     toggleDone={toggleDone} />
             ))
             }
